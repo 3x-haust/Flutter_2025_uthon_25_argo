@@ -1,31 +1,57 @@
 import 'package:flutter/material.dart';
 
 class CircleTag extends StatelessWidget {
-  final String text;
-  final Color color;
-  final double? size;
+  final double size;
+  final String? text;
+  final double? textSize;
+  final Offset position;
 
   const CircleTag({
     super.key,
-    required this.text,
-    required this.color,
-    this.size,
+    required this.size,
+    this.text,
+    this.textSize,
+    required this.position,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
+    return Positioned(
+      left: position.dx,
+      top: position.dy,
+      child: Container(
+        width: size,
+        height: size,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF8C51E6),
+              Color(0xFFD1AFFE),
+            ],
+          ),
+          border: Border.fromBorderSide(
+            BorderSide(
+              color: Color(0xFF652AC2),
+              width: 2,
+            ),
+          ),
         ),
+        child: text != null
+            ? Center(
+                child: Text(
+                  text!,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: textSize ?? 22,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              )
+            : null,
       ),
     );
   }

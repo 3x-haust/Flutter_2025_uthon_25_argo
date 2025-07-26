@@ -7,12 +7,15 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  firebase_auth: ^5.4.2
+  firebase_core: ^3.11.0
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.2.1
   flutter_svg: ^2.2.0
   freezed_annotation: ^3.1.0
   get: ^4.7.2
+  google_sign_in: ^6.2.2
   json_annotation: ^4.9.0
 
 dev_dependencies:

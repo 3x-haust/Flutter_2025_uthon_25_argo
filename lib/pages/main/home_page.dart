@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uthon_2025_argo/gen/assets.gen.dart';
 import 'package:uthon_2025_argo/util/style/colors.dart';
+import 'package:uthon_2025_argo/widgets/circle_tag.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,7 +41,76 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(child: Text('Main Page')),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final screenWidth = constraints.maxWidth;
+          final screenHeight = constraints.maxHeight;
+          
+          return SingleChildScrollView(
+            child: SizedBox(
+              width: screenWidth,
+              height: screenHeight < 800 ? 800 : screenHeight,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  CircleTag(
+                    size: 239,
+                    position: Offset(screenWidth * 0.35, 160),
+                    text: '#쉐이칸샹',
+                    textSize: 22,
+                  ),
+
+                  CircleTag(
+                    size: 183,
+                    position: Offset(screenWidth * 0.05, 365),
+                    text: '#케이팝데몬\n헌터즈',
+                    textSize: 22,
+                  ),
+
+                  CircleTag(
+                    size: 159,
+                    position: Offset(screenWidth * 0.57, 404),
+                    text: '#벽돌초콜릿',
+                    textSize: 22,
+                  ),
+
+                  CircleTag(
+                    size: 140,
+                    position: Offset(screenWidth * 0.32, 535),
+                    text: '#ThankU',
+                    textSize: 22,
+                  ),
+
+                  CircleTag(
+                    size: 115, 
+                    position: Offset(screenWidth * 0.72, 570),
+                  ),
+
+                  CircleTag(
+                    size: 90, 
+                    position: Offset(screenWidth * 0.1, 618),
+                  ),
+
+                  CircleTag(
+                    size: 90, 
+                    position: Offset(screenWidth * 0.55, 665),
+                  ),
+
+                  CircleTag(
+                    size: 90, 
+                    position: Offset(screenWidth * 0.29, 683),
+                  ),
+
+                  CircleTag(
+                    size: 61, 
+                    position: Offset(screenWidth * 0.13, 552),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
