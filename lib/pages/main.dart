@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:uthon_2025_argo/pages/main/chat_page.dart';
 import 'package:uthon_2025_argo/pages/main/home_page.dart';
@@ -35,9 +36,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = ThemeColors.of(context);
+    User user = FirebaseAuth.instance.currentUser!;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: _currentIndex == 0 ? AppBar(
         backgroundColor: Colors.transparent,
         scrolledUnderElevation: 0,
         centerTitle: false,
@@ -45,21 +47,34 @@ class _MainPageState extends State<MainPage> {
           'ARGO',
           style: TextStyle(
             color: colors.gray11,
-            fontSize: 32,
-            fontWeight: FontWeight.w600,
+            fontSize: 28,
+            fontWeight: FontWeight.w800,
+            fontFamily: 'Paperlogy'
           ),
         ),
-      ),
+      ) : _currentIndex == 4 ? AppBar(
+        backgroundColor: colors.white,
+        scrolledUnderElevation: 0,
+        centerTitle: false,
+        title: Text(
+          user.displayName ?? 'User',
+          style: TextStyle(
+            color: colors.gray11,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ) : null,
       backgroundColor: colors.white,
       body: pages[_currentIndex],
-      bottomNavigationBar: MyBottomNavigationBar(
+      bottomNavigationBar: _currentIndex != 2 ? MyBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-      ),
+      ) : null,
     );
   }
 }

@@ -11,6 +11,9 @@
 class FontFamily {
   FontFamily._();
 
+  /// Font family: Paperlogy
+  static const String paperlogy = 'Paperlogy';
+
   /// Font family: Pretendard
   static const String pretendard = 'Pretendard';
 }

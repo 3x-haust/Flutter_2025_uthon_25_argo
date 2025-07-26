@@ -87,7 +87,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
             SvgPicture.asset(
               iconPath,
               colorFilter: ColorFilter.mode(
-                isSelected ? colors.primaryPurple01 : colors.gray04,
+                isSelected ? colors.gray11 : colors.gray04,
                 BlendMode.srcIn,
               ),
               height: iconPath == Assets.icons.plus.path ? 44 : 44,
